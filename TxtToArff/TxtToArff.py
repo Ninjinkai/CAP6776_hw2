@@ -13,15 +13,16 @@ output_path.append('./arff/webkb-test-stemmed.arff')
 class_labels = set()
 documents = []
 
-for doc_num in range(0, len(input_path) - 1):
+for doc_num in range(0, len(input_path)):
+
     # Read the input file into the document list.
     try:
         with open(input_path[doc_num], 'r') as input_file:
             for current_doc in input_file:
                 documents.append(current_doc)
     except:
-        error_messge = 'File ' + input_path[doc_num] + ' not found.'
-        exit(error_messge)
+        error_message = 'File ' + input_path[doc_num] + ' not found.'
+        exit(error_message)
     input_file.close()
 
     # Process each document in the list.
@@ -46,3 +47,5 @@ for doc_num in range(0, len(input_path) - 1):
         for current_doc in documents:
             output_file.write("{0}".format(current_doc))
     output_file.close()
+
+    documents = []
